@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Calculator</title>
+</head>
+<body>
+    <h2>Electricity Bill Calculator</h2>
+    <input type="number" id="units" placeholder="Units Consumed">
+    <input type="number" id="months" placeholder="Late Months">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+    <br>
+    <a href="index.html">Back to Home</a>
+
+    <script>
+        function calculate() {
+            const u = parseFloat(document.getElementById('units').value);
+            const m = parseFloat(document.getElementById('months').value) || 0;
+            let charge = u <= 100 ? u * 5 : (100 * 5 + (u - 100) * 7);
+            let total = (charge + 50) * 1.05;
+            if (m > 0) total *= Math.pow(1.02, m);
+            document.getElementById('result').innerText = "Total Bill: ৳" + total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Calculator</title>
+</head>
+<body>
+    <h2>Advanced Calculator (Power)</h2>
+    <input type="number" id="base" placeholder="Base">
+    <input type="number" id="exp" placeholder="Exponent">
+    <br><br>
+    <button onclick="calculatePower()">Calculate Power</button>
+    
+    <p id="result"></p>
+    <br>
+    <a href="index.html">Back to Home</a>
+
+    <script>
+        function calculatePower() {
+            const base = parseFloat(document.getElementById('base').value);
+            const exp = parseFloat(document.getElementById('exp').value);
+
+            if (isNaN(base) || isNaN(exp)) {
+                document.getElementById('result').innerText = "Please enter valid numbers";
+                return;
+            }
+
+            const res = Math.pow(base, exp);
+            document.getElementById('result').innerText = "Result: " + res;
+        }
+    </script>
+</body>
+</html>

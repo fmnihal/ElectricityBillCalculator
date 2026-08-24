@@ -1,0 +1,21 @@
+{
+  "name": "lab2_calculator_210042161",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": ["lcov"],
+    "coverageDirectory": "./code-coverage-report",
+    "reporters": ["default", "./node_modules/jest-html-reporters"]
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "jest-html-reporters": "^3.1.7"
+  }
+}
