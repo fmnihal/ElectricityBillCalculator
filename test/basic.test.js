@@ -1,4 +1,4 @@
-const calculator= require('../src/basic')
+const calculator= require('../Scripts/basic')
 
 describe('Add', ()=>{
     var BVAdata= [

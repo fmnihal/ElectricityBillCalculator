@@ -1,4 +1,4 @@
-const calculator = require("../src/advanced");
+const calculator = require("../Scripts/advanced");
 
 describe('Pow', () => {
     var BVAdata = [

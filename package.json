@@ -10,7 +10,7 @@
     "collectCoverage": true,
     "coverageReporters": ["lcov"],
     "coverageDirectory": "./code-coverage-report",
-    "reporters": ["default", "./node_modules/jest-html-reporters"]
+    "reporters": ["default", "jest-html-reporters"]
   },
   "author": "",
   "license": "ISC",
