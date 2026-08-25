@@ -2,45 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Basic Calculator</h2>
-    <input type="number" id="num1" placeholder="First Number">
-    <input type="number" id="num2" placeholder="Second Number">
-    <br><br>
-    <button onclick="calculate('add')">+</button>
-    <button onclick="calculate('subtract')">-</button>
-    <button onclick="calculate('multiply')">*</button>
-    <button onclick="calculate('divide')">/</button>
-    
-    <p id="result"></p>
-    <br>
-    <a href="index.html">Back to Home</a>
+    <div class="app-card">
+        <header class="app-header">
+            <h2 class="app-title">Basic Calculator</h2>
+            <p class="app-subtitle">Perform standard arithmetic</p>
+        </header>
+
+        <div class="form-group">
+            <label class="form-label" for="num1">First Number</label>
+            <input class="form-input" type="number" id="num1" placeholder="Enter number">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="num2">Second Number</label>
+            <input class="form-input" type="number" id="num2" placeholder="Enter number">
+        </div>
+
+        <div class="btn-grid">
+            <button type="button" onclick="compute('add')">+</button>
+            <button type="button" onclick="compute('subtract')">-</button>
+            <button type="button" onclick="compute('multiply')">&times;</button>
+            <button type="button" onclick="compute('divide')">&divide;</button>
+        </div>
+
+        <div id="resultBox" class="result-container"></div>
+        <a href="index.html" class="footer-link">Return to Home</a>
+    </div>
 
     <script>
-        function calculate(operation) {
+        function compute(op) {
             const a = parseFloat(document.getElementById('num1').value);
             const b = parseFloat(document.getElementById('num2').value);
-            let res = 0;
+            const box = document.getElementById('resultBox');
+
+            box.className = 'result-container';
 
             if (isNaN(a) || isNaN(b)) {
-                document.getElementById('result').innerText = "Please enter valid numbers";
+                box.innerText = "Please provide valid numeric inputs.";
+                box.classList.add('show-error');
                 return;
             }
 
-            if (operation === 'add') res = a + b;
-            else if (operation === 'subtract') res = a - b;
-            else if (operation === 'multiply') res = a * b;
-            else if (operation === 'divide') {
+            let result;
+            if (op === 'add') result = a + b;
+            else if (op === 'subtract') result = a - b;
+            else if (op === 'multiply') result = a * b;
+            else if (op === 'divide') {
                 if (b === 0) {
-                    document.getElementById('result').innerText = "Error: Division by zero";
+                    box.innerText = "Error: Division by zero is undefined.";
+                    box.classList.add('show-error');
                     return;
                 }
-                res = a / b;
+                result = a / b;
             }
 
-            document.getElementById('result').innerText = "Result: " + res;
+            box.innerText = "Result: " + result;
+            box.classList.add('show-success');
         }
     </script>
 </body>

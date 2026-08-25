@@ -2,16 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator Hub</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Multi-Page Calculator App</h1>
-    <nav>
-        <ul>
-            <li><a href="basic.html"><button>Basic Calculator</button></a></li>
-            <li><a href="advanced.html"><button>Advanced Calculator</button></a></li>
-            <li><a href="custom.html"><button>Custom Electricity Calculator</button></a></li>
-        </ul>
-    </nav>
+    <div class="app-card">
+        <header class="app-header">
+            <h1 class="app-title">Calculator Application</h1>
+            <p class="app-subtitle">Select a calculation module</p>
+        </header>
+        <nav class="nav-stack">
+            <a href="basic.html" class="nav-item">
+                <div class="nav-item-title">Basic Calculator</div>
+                <div class="nav-item-desc">Addition, subtraction, multiplication, and division</div>
+            </a>
+            <a href="advanced.html" class="nav-item">
+                <div class="nav-item-title">Advanced Calculator</div>
+                <div class="nav-item-desc">Power and exponentiation operations</div>
+            </a>
+            <a href="custom.html" class="nav-item">
+                <div class="nav-item-title">Electricity Bill Calculator</div>
+                <div class="nav-item-desc">Multi-slab billing with demand and late fee calculations</div>
+            </a>
+        </nav>
+    </div>
 </body>
 </html>

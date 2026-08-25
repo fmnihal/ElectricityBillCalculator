@@ -2,31 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Advanced Calculator (Power)</h2>
-    <input type="number" id="base" placeholder="Base">
-    <input type="number" id="exp" placeholder="Exponent">
-    <br><br>
-    <button onclick="calculatePower()">Calculate Power</button>
-    
-    <p id="result"></p>
-    <br>
-    <a href="index.html">Back to Home</a>
+    <div class="app-card">
+        <header class="app-header">
+            <h2 class="app-title">Advanced Calculator</h2>
+            <p class="app-subtitle">Calculate exponentiation (Base ^ Exponent)</p>
+        </header>
+
+        <div class="form-group">
+            <label class="form-label" for="base">Base</label>
+            <input class="form-input" type="number" id="base" placeholder="e.g. 2">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="exp">Exponent</label>
+            <input class="form-input" type="number" id="exp" placeholder="e.g. 8">
+        </div>
+
+        <button type="button" class="btn-primary" style="margin-top: 10px;" onclick="computePower()">Calculate Power</button>
+
+        <div id="resultBox" class="result-container"></div>
+        <a href="index.html" class="footer-link">Return to Home</a>
+    </div>
 
     <script>
-        function calculatePower() {
+        function computePower() {
             const base = parseFloat(document.getElementById('base').value);
             const exp = parseFloat(document.getElementById('exp').value);
+            const box = document.getElementById('resultBox');
+
+            box.className = 'result-container';
 
             if (isNaN(base) || isNaN(exp)) {
-                document.getElementById('result').innerText = "Please enter valid numbers";
+                box.innerText = "Please provide valid numbers for both base and exponent.";
+                box.classList.add('show-error');
                 return;
             }
 
-            const res = Math.pow(base, exp);
-            document.getElementById('result').innerText = "Result: " + res;
+            const result = Math.pow(base, exp);
+            box.innerText = "Result: " + result;
+            box.classList.add('show-success');
         }
     </script>
 </body>

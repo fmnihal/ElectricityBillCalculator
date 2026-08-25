@@ -8,14 +8,22 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageReporters": ["lcov"],
+    "coverageReporters": [
+      "lcov"
+    ],
     "coverageDirectory": "./code-coverage-report",
-    "reporters": ["default", "jest-html-reporters"]
+    "reporters": [
+      "default",
+      "jest-html-reporters"
+    ]
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jest": "^30.4.2",
     "jest-html-reporters": "^3.1.7"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }

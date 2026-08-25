@@ -2,25 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Custom Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Electricity Bill Calculator</h2>
-    <input type="number" id="units" placeholder="Units Consumed">
-    <input type="number" id="months" placeholder="Late Months">
-    <button onclick="calculate()">Calculate</button>
-    <p id="result"></p>
-    <br>
-    <a href="index.html">Back to Home</a>
+    <div class="app-card">
+        <header class="app-header">
+            <h2 class="app-title">Electricity Bill</h2>
+            <p class="app-subtitle">Tiered rate calculation module</p>
+        </header>
+
+        <div class="form-group">
+            <label class="form-label" for="units">Units Consumed (kWh)</label>
+            <input class="form-input" type="number" id="units" min="0" placeholder="Enter units (e.g., 150)">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="months">Late Months (Optional)</label>
+            <input class="form-input" type="number" id="months" min="0" placeholder="Enter late months (default 0)">
+        </div>
+
+        <button type="button" class="btn-primary" style="margin-top: 10px;" onclick="computeBill()">Calculate Bill</button>
+
+        <div id="resultBox" class="result-container"></div>
+        <a href="index.html" class="footer-link">Return to Home</a>
+    </div>
 
     <script>
-        function calculate() {
+        function computeBill() {
             const u = parseFloat(document.getElementById('units').value);
             const m = parseFloat(document.getElementById('months').value) || 0;
-            let charge = u <= 100 ? u * 5 : (100 * 5 + (u - 100) * 7);
-            let total = (charge + 50) * 1.05;
-            if (m > 0) total *= Math.pow(1.02, m);
-            document.getElementById('result').innerText = "Total Bill: ৳" + total.toFixed(2);
+            const box = document.getElementById('resultBox');
+
+            box.className = 'result-container';
+
+            if (isNaN(u) || u < 0 || m < 0) {
+                box.innerText = "Please enter valid non-negative values.";
+                box.classList.add('show-error');
+                return;
+            }
+
+            let energyCharge = 0;
+            if (u <= 100) {
+                energyCharge = u * 5;
+            } else if (u <= 300) {
+                energyCharge = (100 * 5) + ((u - 100) * 7);
+            } else {
+                energyCharge = (100 * 5) + (200 * 7) + ((u - 300) * 10);
+            }
+
+            const demandCharge = 50;
+            const subtotal = energyCharge + demandCharge;
+            const vat = subtotal * 0.05;
+            let total = subtotal + vat;
+
+            if (m > 0) {
+                total *= Math.pow(1.02, m);
+            }
+
+            box.innerText = "Total Payable: Tk " + total.toFixed(2);
+            box.classList.add('show-success');
         }
     </script>
 </body>
